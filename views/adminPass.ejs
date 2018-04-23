@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload File </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+	</style>
+  </head>
+  <body>
+	<br/>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+          <center><h2 class="form-signin-heading">Admin</h2></center>
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-1">
+
+      </div>
+
+      <div class="col-sm-10">
+        <div class="row">
+          <table class = "table">
+          <thead class = "thead-inverse">
+            <tr>
+              <th>#</th>
+                <th>รูป</th>
+                <th>ประเภท</th>
+                <th>ชื่อสินค้า</th>
+                <th>รายละเอียด</th>
+                <th>ราคา</th>
+                <th>แสดง</th>
+                <th>ลบ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%
+              for(var i=0;i<data.length;i++){
+                no=i+1;
+                _id=data[i]._id;
+                category=data[i].category;
+                Product_name=data[i].Product_name;
+                Details=data[i].Details;
+                Pricex=data[i].Pricex;
+                img1=data[i].img1;
+                %>
+                <tr>
+                  <th scope="row"><%=no%></th>
+                  <td scope="row"><img src="uploads/<%= img1 %>" style="width:45px; height:60px;" ></td>
+                  <td scope="row"><%=category%></td>
+                  <td scope="row" style="width:15%;"><%=Product_name%></td>
+                  <td scope="row" style="width:100%;"><%=Details%></td>
+                  <td scope="row"><%=Pricex%></td>
+                </a>
+                  <td><a class="btn btn-outline-info" href="admin_view/<%=_id%>" target="_blank">แสดง</a></td>
+                  <td><a class="btn btn-outline-danger" href="/delete/<%=_id%>" onclick="return confirm('Are you sure you want to delete?');">ลบ</a></td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+
+      </div>
+    </div>
+  </div>
+
+
+
+    <script src="/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
